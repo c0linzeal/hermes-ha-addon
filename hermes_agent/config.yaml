@@ -1,7 +1,7 @@
-name: Hermes Agent
-version: "1.2.1"
-slug: hermes_agent
-description: "The self-improving AI agent built by Nous Research. Home Assistant add-on by Wolfram Ravenwolf."
+name: Hermes Agent (Max Access)
+version: "1.2.1-max"
+slug: hermes_agent_max
+description: "Hermes Agent with full host access — homeassistant_api, hassio admin, /config write, Docker socket, privileged caps. Fork of WolframRavenwolf/hermes-ha-addon for personal use."
 url: "https://github.com/WolframRavenwolf/hermes-ha-addon"
 arch:
   - amd64
@@ -13,11 +13,28 @@ ingress: true
 ingress_port: 49169
 ingress_stream: true
 panel_icon: mdi:robot
-panel_title: Hermes Agent
+panel_title: Hermes Max
+homeassistant_api: true
+hassio_api: true
+hassio_role: admin
+host_network: true
+host_pid: true
+host_dbus: true
+docker_api: true
+full_access: true
+apparmor: false
+privileged:
+  - SYS_ADMIN
+  - NET_ADMIN
+  - DAC_READ_SEARCH
 map:
   - addon_config:rw
   - media:rw
   - share:rw
+  - config:rw
+  - all_addon_configs:rw
+  - backup:rw
+  - ssl:rw
 ports:
   8080/tcp: null
   8443/tcp: 8443
