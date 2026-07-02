@@ -93,5 +93,5 @@ RUN mkdir -p /var/www /var/log/nginx /run/nginx
 # Runtime HOME (build uses /root, runtime uses /config = addon persistent storage)
 ENV HOME=/config
 
-ENTRYPOINT ["/run.sh"]
+ENTRYPOINT ["/bin/sh", "-c", "mkdir -p /run/s6/container_environment && exec /run.sh"]
 CMD []
